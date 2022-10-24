@@ -40,6 +40,8 @@ jobs:
           context: ./simple-api
           # Note: tags has to be all lower-case
           tags: ${{secrets.DOCKERHUB_USERNAME}}/correction-tp1-devops/simple-api
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/master'}}
 
       - name: Build image and push database
         uses: docker/build-push-action@v2
